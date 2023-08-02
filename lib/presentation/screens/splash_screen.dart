@@ -1,6 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:tryambaka_user/presentation/screens/home/home_screen.dart';
+import 'package:tryambaka_user/presentation/main_home.dart';
 import 'package:tryambaka_user/presentation/screens/login/login_or_signup.dart';
 
 class SplashScreen extends StatelessWidget {
@@ -17,7 +17,7 @@ class SplashScreen extends StatelessWidget {
           } else if (snapshot.hasError) {
             return const SnackBar(content: Text("Something went wrong"));
           } else if (snapshot.hasData) {
-            return const HomeScreen();
+            return const MainHome();
           } else {
             return const LoginOrSignUp();
           }

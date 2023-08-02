@@ -52,6 +52,7 @@ class LoginPage extends StatelessWidget {
             email: emailController.text.trim(),
             password: passwordController.text.trim());
       } on FirebaseAuthException catch (e) {
+        // ignore: avoid_print
         print(e);
 
         utils.showSnackbar(e.message);
@@ -64,7 +65,7 @@ class LoginPage extends StatelessWidget {
     return SafeArea(
       child: Stack(
         children: [
-          LoginBackground(imageurl: "assets/images/login_bg.jpg"),
+          const LoginBackground(imageurl: "assets/images/login_bg.jpg"),
           Scaffold(
             backgroundColor: transparent,
             body: SingleChildScrollView(
@@ -78,7 +79,10 @@ class LoginPage extends StatelessWidget {
                     const Center(
                       child: Text(
                         'Login to Account',
-                        style: TextStyle(fontSize: 30),
+                        style: TextStyle(
+                            fontSize: 30,
+                            color: white,
+                            fontWeight: FontWeight.bold),
                       ),
                     ),
                     kHeight10,
@@ -120,7 +124,10 @@ class LoginPage extends StatelessWidget {
                             padding: EdgeInsets.symmetric(horizontal: 8.0),
                             child: Text(
                               'Log In',
-                              style: TextStyle(fontSize: 20),
+                              style: TextStyle(
+                                  fontSize: 20,
+                                  color: white,
+                                  fontWeight: FontWeight.bold),
                             ),
                           ),
                         ),
@@ -139,13 +146,16 @@ class LoginPage extends StatelessWidget {
                               Container(
                                 width: size.width * 0.25,
                                 height: 1,
-                                color: grey,
+                                color: white,
                               ),
-                              const Text('or Continue with'),
+                              const Text(
+                                'or Continue with',
+                                style: TextStyle(color: white, fontSize: 18),
+                              ),
                               Container(
                                 width: size.width * 0.25,
                                 height: 1,
-                                color: grey,
+                                color: white,
                               )
                             ],
                           ),
@@ -153,28 +163,15 @@ class LoginPage extends StatelessWidget {
                       ),
                     ),
                     kHeight10,
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        InkWell(
-                          onTap: () {
-                            googleSignIn();
-                          },
-                          child: SizedBox(
-                            width: 40,
-                            child: Image.network(
-                                'https://www.freepnglogos.com/uploads/google-logo-png/google-logo-icon-png-transparent-background-osteopathy-16.png'),
-                          ),
-                        ),
-                        const SizedBox(
-                          width: 10,
-                        ),
-                        Container(
-                          width: 40,
-                          child: Image.network(
-                              'https://www.edigitalagency.com.au/wp-content/uploads/Facebook-logo-blue-circle-large-transparent-png.png'),
-                        ),
-                      ],
+                    InkWell(
+                      onTap: () {
+                        googleSignIn();
+                      },
+                      child: SizedBox(
+                        width: 40,
+                        child: Image.network(
+                            'https://www.freepnglogos.com/uploads/google-logo-png/google-logo-icon-png-transparent-background-osteopathy-16.png'),
+                      ),
                     ),
                     kHeight10,
                     kHeight10,

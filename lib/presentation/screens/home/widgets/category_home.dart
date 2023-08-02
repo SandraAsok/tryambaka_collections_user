@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:tryambaka_user/data/constants/constants.dart';
 
+// ignore: camel_case_types
 class Category_Home extends StatelessWidget {
   const Category_Home({
     super.key,

@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print
+
 import 'package:email_validator/email_validator.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -46,7 +48,7 @@ class ForgotPassword extends StatelessWidget {
     return SafeArea(
       child: Stack(
         children: [
-          LoginBackground(imageurl: "assets/images/login_bg.jpg"),
+          const LoginBackground(imageurl: "assets/images/login_bg.jpg"),
           Scaffold(
             backgroundColor: transparent,
             body: SingleChildScrollView(

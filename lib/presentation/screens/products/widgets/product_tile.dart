@@ -30,13 +30,13 @@ class ProductTile extends StatelessWidget {
                 height: 200,
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(25),
-                    image: DecorationImage(
+                    image: const DecorationImage(
                       image: AssetImage("assets/images/men.jpg"),
                       fit: BoxFit.cover,
                     )),
               ),
               kHeight10,
-              Text(
+              const Text(
                 "Traditional Set",
                 overflow: TextOverflow.ellipsis,
                 maxLines: 1,
@@ -47,7 +47,7 @@ class ProductTile extends StatelessWidget {
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              Text(
+              const Text(
                 "1599/-",
                 style: TextStyle(
                   letterSpacing: .5,

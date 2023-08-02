@@ -140,7 +140,7 @@ class _HomeScreenState extends State<HomeScreen> {
               style: appbarTitle,
             ),
             kHeight25,
-            ProductTile(),
+            const ProductTile(),
           ],
         ),
       ),

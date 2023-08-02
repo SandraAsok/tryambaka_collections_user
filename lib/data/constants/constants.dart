@@ -19,6 +19,7 @@ const kHeight5 = SizedBox(height: 5);
 
 const kWidth25 = SizedBox(width: 25);
 
+// ignore: unused_element
 final List<String> _adImages = [
   "assets/images/saree_cover.jpeg",
   "assets/images/saree_cover2.jpeg",

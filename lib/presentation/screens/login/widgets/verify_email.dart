@@ -6,7 +6,7 @@ import 'package:tryambaka_user/presentation/screens/home/home_screen.dart';
 import 'package:tryambaka_user/presentation/widgets/utils.dart';
 
 class VerifyEmailPage extends StatefulWidget {
-  VerifyEmailPage({super.key});
+  const VerifyEmailPage({super.key});
 
   @override
   State<VerifyEmailPage> createState() => _VerifyEmailPageState();
@@ -53,7 +53,7 @@ class _VerifyEmailPageState extends State<VerifyEmailPage> {
 
   @override
   Widget build(BuildContext context) => isEmailVerified
-      ? HomeScreen()
+      ? const HomeScreen()
       : const SafeArea(
           child: Scaffold(
             body: Column(

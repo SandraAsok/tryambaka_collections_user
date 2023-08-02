@@ -143,7 +143,7 @@ class SignUpScreen extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text(
+                    const Text(
                       "Already have an account?",
                       style: TextStyle(color: black, fontSize: 15),
                     ),

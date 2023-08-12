@@ -1,21 +1,16 @@
 // ignore_for_file: library_private_types_in_public_api, prefer_final_fields, use_key_in_widget_constructors, prefer_const_constructors_in_immutables
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:tryambaka_user/data/color/colors.dart';
-import 'package:tryambaka_user/data/functions/functions.dart';
 import 'package:tryambaka_user/presentation/screens/home/widgets/category_home.dart';
+import 'package:tryambaka_user/presentation/screens/home/widgets/exclusive_tile.dart';
 import 'package:tryambaka_user/presentation/screens/products/widgets/product_tile.dart';
+import 'package:tryambaka_user/presentation/widgets/shimmer_effect.dart';
 
 import '../../../data/constants/constants.dart';
 import '../search/widgets/search_widget.dart';
-
-final List<String> _adImages = [
-  "assets/images/saree_cover.jpeg",
-  "assets/images/saree_cover2.jpeg",
-  "assets/images/saree_cover.jpeg",
-  "assets/images/saree_cover2.jpeg",
-];
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -27,6 +22,8 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   ScrollController _scrollController = ScrollController();
   int _currentImageIndex = 1;
+  final Stream<QuerySnapshot> _exclusiveproductstream =
+      FirebaseFirestore.instance.collection('exclusive').snapshots();
 
   @override
   void initState() {
@@ -90,23 +87,42 @@ class _HomeScreenState extends State<HomeScreen> {
             SingleChildScrollView(
               child: SizedBox(
                 height: 290,
-                child: ListView.builder(
-                  controller: _scrollController,
-                  scrollDirection: Axis.horizontal,
-                  itemCount: _adImages.length,
-                  itemBuilder: (context, index) {
-                    return buildImageWithNumber(_adImages[index],
-                        isSelected: index == _currentImageIndex);
-                  },
-                ),
+                child: StreamBuilder<QuerySnapshot>(
+                    stream: _exclusiveproductstream,
+                    builder: (context, snapshot) {
+                      if (snapshot.hasData) {
+                        final List<DocumentSnapshot> documents =
+                            snapshot.data!.docs;
+                        return ListView.builder(
+                          controller: _scrollController,
+                          scrollDirection: Axis.horizontal,
+                          itemCount: documents.length,
+                          itemBuilder: (context, index) {
+                            return ExclusiveTile(
+                              id: documents[index].get('id'),
+                              productName: documents[index].get('productName'),
+                              subName: documents[index].get('subName'),
+                              category: documents[index].get('category'),
+                              description: documents[index].get('description'),
+                              quantity: documents[index].get('quantity'),
+                              color: documents[index].get('color'),
+                              price: documents[index].get('price'),
+                              image: documents[index].get('image'),
+                            );
+                          },
+                        );
+                      } else if (snapshot.hasError) {
+                        return Text("Error : ${snapshot.error}");
+                      } else if (snapshot.connectionState ==
+                          ConnectionState.waiting) {
+                        return const ShimmerEffect();
+                      } else {
+                        return const ShimmerEffect();
+                      }
+                    }),
               ),
             ),
             kHeight10,
-            SizedBox(
-              // Use a fixed height for DashIndicator
-              height: 20,
-              child: DashIndicator(_currentImageIndex),
-            ),
             kHeight10,
             Text(
               "\t\tCategories",
@@ -144,31 +160,6 @@ class _HomeScreenState extends State<HomeScreen> {
           ],
         ),
       ),
-    );
-  }
-}
-
-class DashIndicator extends StatelessWidget {
-  final int selectedIndex;
-
-  DashIndicator(this.selectedIndex);
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        for (int i = 0; i < _adImages.length; i++)
-          Container(
-            height: 6,
-            width: 24,
-            margin: const EdgeInsets.symmetric(horizontal: 4),
-            decoration: BoxDecoration(
-              color: i == selectedIndex ? black : grey,
-              borderRadius: BorderRadius.circular(3),
-            ),
-          ),
-      ],
     );
   }
 }

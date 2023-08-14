@@ -1,66 +1,106 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:tryambaka_user/data/color/colors.dart';
 import 'package:tryambaka_user/data/constants/constants.dart';
 
 class ProductTile extends StatelessWidget {
-  const ProductTile({super.key});
+  final String id;
+  final String productName;
+  final String subName;
+  final String category;
+  final String description;
+  final String quantity;
+  final String color;
+  final String price;
+  final List<dynamic> image;
+
+  const ProductTile({
+    super.key,
+    required this.id,
+    required this.productName,
+    required this.subName,
+    required this.category,
+    required this.description,
+    required this.quantity,
+    required this.color,
+    required this.price,
+    required this.image,
+  });
 
   @override
   Widget build(BuildContext context) {
-    var size = MediaQuery.of(context).size;
-    final double productHeight = (size.height - kToolbarHeight - 24) / 5;
-    final double productWidth = size.width / 2;
-    return GridView.builder(
-      shrinkWrap: true,
-      itemCount: 7,
-      physics: const NeverScrollableScrollPhysics(),
-      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: 2,
-        childAspectRatio: (productHeight / productWidth),
-        crossAxisSpacing: 8,
-        mainAxisSpacing: 5,
-      ),
-      itemBuilder: (context, index) {
-        return GestureDetector(
-          onTap: () {},
-          child: Column(
-            children: [
-              Container(
-                width: 200,
-                height: 200,
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(25),
-                    image: const DecorationImage(
-                      image: AssetImage("assets/images/men.jpg"),
-                      fit: BoxFit.cover,
-                    )),
-              ),
-              kHeight10,
-              const Text(
-                "Traditional Set",
-                overflow: TextOverflow.ellipsis,
-                maxLines: 1,
-                style: TextStyle(
-                  letterSpacing: .5,
-                  fontSize: 20,
-                  color: fontcolor,
-                  fontWeight: FontWeight.bold,
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: GestureDetector(
+        onTap: () {
+          // Navigator.of(context).push(CupertinoPageRoute(
+          //     builder: (context) => productDetails(
+          //           id: id,
+          //           productName: productName,
+          //           subName: subName,
+          //           category: category,
+          //           description: description,
+          //           quantity: quantity,
+          //           color: color,
+          //           price: price,
+          //           image: image,
+          //         )));
+        },
+        child: Column(
+          children: [
+            Container(
+              width: 180,
+              height: 180,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(25),
+                image: DecorationImage(
+                  image: NetworkImage(image[0]),
+                  fit: BoxFit.contain,
                 ),
               ),
-              const Text(
-                "1599/-",
-                style: TextStyle(
-                  letterSpacing: .5,
+              child: Stack(
+                children: [
+                  Positioned(
+                    left: 145,
+                    top: 0,
+                    child: Row(
+                      children: [
+                        IconButton(
+                            onPressed: () {},
+                            icon: const Icon(
+                              Icons.favorite,
+                              color: black,
+                              size: 25,
+                            )),
+                      ],
+                    ),
+                  )
+                ],
+              ),
+            ),
+            kHeight10,
+            Text(
+              productName,
+              overflow: TextOverflow.ellipsis,
+              maxLines: 1,
+              style: const TextStyle(
+                letterSpacing: 0.5,
+                fontSize: 20,
+                color: blackfont,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            Text(
+              price,
+              style: const TextStyle(
+                  letterSpacing: 0.5,
                   fontSize: 15,
-                  color: fontcolor,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              kHeight10,
-            ],
-          ),
-        );
-      },
+                  color: blackfont,
+                  fontWeight: FontWeight.bold),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }

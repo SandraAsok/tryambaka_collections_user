@@ -2,9 +2,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:tryambaka_user/data/color/colors.dart';
 import 'package:tryambaka_user/data/constants/constants.dart';
-import 'package:tryambaka_user/presentation/screens/home/widgets/exclusive_details.dart';
+import 'package:tryambaka_user/presentation/screens/products/widgets/exclusive_details.dart';
 
-class ExclusiveTile extends StatelessWidget {
+class ExclusiveItem extends StatelessWidget {
   final String id;
   final String productName;
   final String subName;
@@ -15,7 +15,7 @@ class ExclusiveTile extends StatelessWidget {
   final String price;
   final List<dynamic> image;
 
-  const ExclusiveTile({
+  const ExclusiveItem({
     super.key,
     required this.id,
     required this.productName,
@@ -31,7 +31,7 @@ class ExclusiveTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(10.0),
+      padding: const EdgeInsets.all(8.0),
       child: GestureDetector(
         onTap: () {
           Navigator.of(context).push(CupertinoPageRoute(
@@ -99,7 +99,6 @@ class ExclusiveTile extends StatelessWidget {
                   color: blackfont,
                   fontWeight: FontWeight.bold),
             ),
-            kHeight10,
           ],
         ),
       ),

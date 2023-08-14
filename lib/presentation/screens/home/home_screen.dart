@@ -5,8 +5,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:tryambaka_user/data/color/colors.dart';
 import 'package:tryambaka_user/presentation/screens/home/widgets/category_home.dart';
-import 'package:tryambaka_user/presentation/screens/home/widgets/exclusive_tile.dart';
-import 'package:tryambaka_user/presentation/screens/products/widgets/product_tile.dart';
+import 'package:tryambaka_user/presentation/screens/products/widgets/exclusive_item.dart';
+import 'package:tryambaka_user/presentation/screens/products/exclusive_screen.dart';
 import 'package:tryambaka_user/presentation/widgets/shimmer_effect.dart';
 
 import '../../../data/constants/constants.dart';
@@ -83,7 +83,26 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
             kHeight25,
             const CustomSearchWidget(),
-            kHeight25,
+            kHeight10,
+            Row(
+              children: [
+                Text(
+                  "\t\t Tryambaka Designs",
+                  style: appbarTitle,
+                ),
+                const Spacer(),
+                TextButton(
+                    onPressed: () {
+                      Navigator.of(context).push(CupertinoPageRoute(
+                          builder: (context) => const ExclusiveScreen()));
+                    },
+                    child: Text(
+                      "show more...>",
+                      style: subTitle,
+                    )),
+              ],
+            ),
+            kHeight10,
             SingleChildScrollView(
               child: SizedBox(
                 height: 290,
@@ -96,9 +115,9 @@ class _HomeScreenState extends State<HomeScreen> {
                         return ListView.builder(
                           controller: _scrollController,
                           scrollDirection: Axis.horizontal,
-                          itemCount: documents.length,
+                          itemCount: 3,
                           itemBuilder: (context, index) {
-                            return ExclusiveTile(
+                            return ExclusiveItem(
                               id: documents[index].get('id'),
                               productName: documents[index].get('productName'),
                               subName: documents[index].get('subName'),
@@ -122,8 +141,6 @@ class _HomeScreenState extends State<HomeScreen> {
                     }),
               ),
             ),
-            kHeight10,
-            kHeight10,
             Text(
               "\t\tCategories",
               style: appbarTitle,
@@ -132,21 +149,13 @@ class _HomeScreenState extends State<HomeScreen> {
             const Row(
               children: [
                 Spacer(),
-                Category_Home(
-                    categoryUrl: "assets/images/men.jpg",
-                    categoryText: "Men\nCollections"),
+                CategoryMen(),
                 Spacer(),
-                Category_Home(
-                    categoryUrl: "assets/images/woman.jpeg",
-                    categoryText: "Woman\nCollections"),
+                CategoryWoman(),
                 Spacer(),
-                Category_Home(
-                    categoryUrl: "assets/images/boy.webp",
-                    categoryText: "Boy\nCollections"),
+                CategoryKids(),
                 Spacer(),
-                Category_Home(
-                    categoryUrl: "assets/images/girl.jpg",
-                    categoryText: "Girl\nCollections"),
+                CategoryOthers(),
                 Spacer(),
               ],
             ),
@@ -156,7 +165,6 @@ class _HomeScreenState extends State<HomeScreen> {
               style: appbarTitle,
             ),
             kHeight25,
-            const ProductTile(),
           ],
         ),
       ),

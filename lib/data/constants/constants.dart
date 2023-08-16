@@ -2,15 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:tryambaka_user/data/color/colors.dart';
 
+// Titles
 TextStyle kHeading =
     const TextStyle(fontSize: 50, fontWeight: FontWeight.w100, color: white);
 TextStyle normalHeading =
     const TextStyle(fontSize: 22, fontWeight: FontWeight.w100, color: white);
-TextStyle itemHeading = const TextStyle(
-    fontSize: 22,
-    fontStyle: FontStyle.italic,
-    fontWeight: FontWeight.bold,
-    color: black);
+TextStyle itemHeading = GoogleFonts.luxuriousRoman(
+    fontSize: 24, fontWeight: FontWeight.bold, color: fontcolor);
 
 TextStyle appbarTitle = GoogleFonts.luxuriousRoman(
     fontSize: 25, fontWeight: FontWeight.bold, color: fontcolor);

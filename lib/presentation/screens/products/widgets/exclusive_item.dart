@@ -91,11 +91,12 @@ class ExclusiveItem extends StatelessWidget {
                 fontWeight: FontWeight.bold,
               ),
             ),
+            kHeight5,
             Text(
-              price,
+              "$price/-",
               style: const TextStyle(
                   letterSpacing: 0.5,
-                  fontSize: 15,
+                  fontSize: 18,
                   color: blackfont,
                   fontWeight: FontWeight.bold),
             ),

@@ -1,5 +1,4 @@
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
 import 'package:tryambaka_user/presentation/screens/category/widgets/category_men.dart';
 
 // ignore: camel_case_types
@@ -14,7 +13,8 @@ class CategoryMen extends StatelessWidget {
         GestureDetector(
           onTap: () {
             Navigator.of(context).push(CupertinoPageRoute(
-                builder: (context) => MenCategory(), fullscreenDialog: true));
+                builder: (context) => const MenCategory(),
+                fullscreenDialog: true));
           },
           child: Container(
             width: 70,
@@ -63,8 +63,8 @@ class CategoryWoman extends StatelessWidget {
   }
 }
 
-class CategoryKids extends StatelessWidget {
-  const CategoryKids({super.key});
+class CategoryBoy extends StatelessWidget {
+  const CategoryBoy({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -91,8 +91,8 @@ class CategoryKids extends StatelessWidget {
   }
 }
 
-class CategoryOthers extends StatelessWidget {
-  const CategoryOthers({super.key});
+class CategoryGirl extends StatelessWidget {
+  const CategoryGirl({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -118,3 +118,68 @@ class CategoryOthers extends StatelessWidget {
     );
   }
 }
+
+GestureDetector shirt = GestureDetector(
+  onTap: () {},
+  child: Container(
+    width: 90,
+    height: 90,
+    decoration: const BoxDecoration(
+      shape: BoxShape.circle,
+      image: DecorationImage(
+        image: NetworkImage(
+            "https://m.media-amazon.com/images/I/61hJHoTGDFL._UY879_.jpg"),
+        fit: BoxFit.cover,
+      ),
+    ),
+  ),
+);
+
+GestureDetector doubleMund = GestureDetector(
+  onTap: () {},
+  child: Container(
+    width: 90,
+    height: 90,
+    decoration: const BoxDecoration(
+      shape: BoxShape.circle,
+      image: DecorationImage(
+        image: NetworkImage(
+            "https://m.media-amazon.com/images/I/7140k66zO2L._UY879_.jpg"),
+        fit: BoxFit.cover,
+      ),
+    ),
+  ),
+);
+
+GestureDetector jubba = GestureDetector(
+  onTap: () {},
+  child: Container(
+    width: 90,
+    height: 90,
+    decoration: const BoxDecoration(
+      shape: BoxShape.circle,
+      image: DecorationImage(
+        image: NetworkImage(
+            "https://m.media-amazon.com/images/I/717hS3wQp1L._UY879_.jpg"),
+        fit: BoxFit.cover,
+      ),
+    ),
+  ),
+);
+
+// ignore: non_constant_identifier_names
+GestureDetector Tshirt = GestureDetector(
+  onTap: () {},
+  child: Container(
+    width: 90,
+    height: 90,
+    decoration: const BoxDecoration(
+      shape: BoxShape.circle,
+      image: DecorationImage(
+        image: NetworkImage(
+            'https://m.media-amazon.com/images/I/71jpwXiEDpL._UX679_.jpg'),
+        fit: BoxFit.cover,
+      ),
+    ),
+  ),
+);

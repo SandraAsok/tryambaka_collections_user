@@ -127,8 +127,7 @@ GestureDetector shirt = GestureDetector(
     decoration: const BoxDecoration(
       shape: BoxShape.circle,
       image: DecorationImage(
-        image: NetworkImage(
-            "https://m.media-amazon.com/images/I/61hJHoTGDFL._UY879_.jpg"),
+        image: AssetImage("assets/images/shirt.jpg"),
         fit: BoxFit.cover,
       ),
     ),
@@ -143,15 +142,14 @@ GestureDetector doubleMund = GestureDetector(
     decoration: const BoxDecoration(
       shape: BoxShape.circle,
       image: DecorationImage(
-        image: NetworkImage(
-            "https://m.media-amazon.com/images/I/7140k66zO2L._UY879_.jpg"),
+        image: AssetImage("assets/images/mundu.jpg"),
         fit: BoxFit.cover,
       ),
     ),
   ),
 );
 
-GestureDetector jubba = GestureDetector(
+GestureDetector kurti = GestureDetector(
   onTap: () {},
   child: Container(
     width: 90,
@@ -159,8 +157,7 @@ GestureDetector jubba = GestureDetector(
     decoration: const BoxDecoration(
       shape: BoxShape.circle,
       image: DecorationImage(
-        image: NetworkImage(
-            "https://m.media-amazon.com/images/I/717hS3wQp1L._UY879_.jpg"),
+        image: AssetImage("assets/images/kurti.jpg"),
         fit: BoxFit.cover,
       ),
     ),
@@ -176,9 +173,188 @@ GestureDetector Tshirt = GestureDetector(
     decoration: const BoxDecoration(
       shape: BoxShape.circle,
       image: DecorationImage(
-        image: NetworkImage(
-            'https://m.media-amazon.com/images/I/71jpwXiEDpL._UX679_.jpg'),
+        image: AssetImage('assets/images/tshirt.jpg'),
         fit: BoxFit.cover,
+      ),
+    ),
+  ),
+);
+
+GestureDetector saree = GestureDetector(
+  onTap: () {},
+  child: Container(
+    width: 90,
+    height: 90,
+    decoration: const BoxDecoration(
+      shape: BoxShape.circle,
+      image: DecorationImage(
+        image: AssetImage('assets/images/saree.jpg'),
+        fit: BoxFit.cover,
+      ),
+    ),
+  ),
+);
+
+GestureDetector halfsaree = GestureDetector(
+  onTap: () {},
+  child: Container(
+    width: 90,
+    height: 90,
+    decoration: const BoxDecoration(
+      shape: BoxShape.circle,
+      image: DecorationImage(
+        image: AssetImage("assets/images/halfsaree.jpg"),
+        fit: BoxFit.cover,
+      ),
+    ),
+  ),
+);
+
+GestureDetector setmundu = GestureDetector(
+  onTap: () {},
+  child: Container(
+    width: 90,
+    height: 90,
+    decoration: const BoxDecoration(
+      shape: BoxShape.circle,
+      image: DecorationImage(
+        image: AssetImage("assets/images/setmundu.jpg"),
+        fit: BoxFit.cover,
+      ),
+    ),
+  ),
+);
+
+GestureDetector churidar = GestureDetector(
+  onTap: () {},
+  child: Container(
+    width: 90,
+    height: 90,
+    decoration: const BoxDecoration(
+      shape: BoxShape.circle,
+      image: DecorationImage(
+        image: AssetImage("assets/images/churidar.jpg"),
+        fit: BoxFit.cover,
+      ),
+    ),
+  ),
+);
+
+GestureDetector kidSet = GestureDetector(
+  onTap: () {},
+  child: Container(
+    width: 90,
+    height: 90,
+    decoration: const BoxDecoration(
+      shape: BoxShape.circle,
+      image: DecorationImage(
+        image: AssetImage('assets/images/kidset.webp'),
+        fit: BoxFit.fill,
+      ),
+    ),
+  ),
+);
+
+GestureDetector kidshirt = GestureDetector(
+  onTap: () {},
+  child: Container(
+    width: 90,
+    height: 90,
+    decoration: const BoxDecoration(
+      shape: BoxShape.circle,
+      image: DecorationImage(
+        image: AssetImage("assets/images/kidshirt.webp"),
+        fit: BoxFit.fill,
+      ),
+    ),
+  ),
+);
+
+GestureDetector kidmunduset = GestureDetector(
+  onTap: () {},
+  child: Container(
+    width: 90,
+    height: 90,
+    decoration: const BoxDecoration(
+      shape: BoxShape.circle,
+      image: DecorationImage(
+        image: AssetImage("assets/images/kidmunduset.webp"),
+        fit: BoxFit.fill,
+      ),
+    ),
+  ),
+);
+
+GestureDetector kidkurtiset = GestureDetector(
+  onTap: () {},
+  child: Container(
+    width: 90,
+    height: 90,
+    decoration: const BoxDecoration(
+      shape: BoxShape.circle,
+      image: DecorationImage(
+        image: AssetImage("assets/images/kidkurtiset.webp"),
+        fit: BoxFit.fill,
+      ),
+    ),
+  ),
+);
+
+GestureDetector kidspattupavada = GestureDetector(
+  onTap: () {},
+  child: Container(
+    width: 90,
+    height: 90,
+    decoration: const BoxDecoration(
+      shape: BoxShape.circle,
+      image: DecorationImage(
+        image: AssetImage('assets/images/kidspattupaavada.webp'),
+        fit: BoxFit.fill,
+      ),
+    ),
+  ),
+);
+
+GestureDetector kidsfrock = GestureDetector(
+  onTap: () {},
+  child: Container(
+    width: 90,
+    height: 90,
+    decoration: const BoxDecoration(
+      shape: BoxShape.circle,
+      image: DecorationImage(
+        image: AssetImage("assets/images/kidsfrock.webp"),
+        fit: BoxFit.fill,
+      ),
+    ),
+  ),
+);
+
+GestureDetector kidsmidiset = GestureDetector(
+  onTap: () {},
+  child: Container(
+    width: 90,
+    height: 90,
+    decoration: const BoxDecoration(
+      shape: BoxShape.circle,
+      image: DecorationImage(
+        image: AssetImage("assets/images/kidsmidiset.webp"),
+        fit: BoxFit.fill,
+      ),
+    ),
+  ),
+);
+
+GestureDetector kidschuridar = GestureDetector(
+  onTap: () {},
+  child: Container(
+    width: 90,
+    height: 90,
+    decoration: const BoxDecoration(
+      shape: BoxShape.circle,
+      image: DecorationImage(
+        image: AssetImage("assets/images/kidschuridar.jpg"),
+        fit: BoxFit.fill,
       ),
     ),
   ),

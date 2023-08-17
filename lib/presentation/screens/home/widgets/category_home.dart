@@ -249,7 +249,7 @@ GestureDetector kidSet = GestureDetector(
       shape: BoxShape.circle,
       image: DecorationImage(
         image: AssetImage('assets/images/kidset.webp'),
-        fit: BoxFit.fill,
+        fit: BoxFit.cover,
       ),
     ),
   ),
@@ -264,7 +264,7 @@ GestureDetector kidshirt = GestureDetector(
       shape: BoxShape.circle,
       image: DecorationImage(
         image: AssetImage("assets/images/kidshirt.webp"),
-        fit: BoxFit.fill,
+        fit: BoxFit.cover,
       ),
     ),
   ),
@@ -279,7 +279,7 @@ GestureDetector kidmunduset = GestureDetector(
       shape: BoxShape.circle,
       image: DecorationImage(
         image: AssetImage("assets/images/kidmunduset.webp"),
-        fit: BoxFit.fill,
+        fit: BoxFit.cover,
       ),
     ),
   ),
@@ -294,7 +294,7 @@ GestureDetector kidkurtiset = GestureDetector(
       shape: BoxShape.circle,
       image: DecorationImage(
         image: AssetImage("assets/images/kidkurtiset.webp"),
-        fit: BoxFit.fill,
+        fit: BoxFit.cover,
       ),
     ),
   ),

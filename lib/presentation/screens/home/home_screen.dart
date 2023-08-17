@@ -7,6 +7,7 @@ import 'package:tryambaka_user/data/color/colors.dart';
 import 'package:tryambaka_user/presentation/screens/home/widgets/category_home.dart';
 import 'package:tryambaka_user/presentation/screens/products/widgets/exclusive_item.dart';
 import 'package:tryambaka_user/presentation/screens/products/exclusive_screen.dart';
+import 'package:tryambaka_user/presentation/screens/products/widgets/product_tile.dart';
 import 'package:tryambaka_user/presentation/widgets/shimmer_effect.dart';
 
 import '../../../data/constants/constants.dart';
@@ -24,6 +25,8 @@ class _HomeScreenState extends State<HomeScreen> {
   int _currentImageIndex = 1;
   final Stream<QuerySnapshot> _exclusiveproductstream =
       FirebaseFirestore.instance.collection('exclusive').snapshots();
+  final Stream<QuerySnapshot> _productstream =
+      FirebaseFirestore.instance.collection('products').snapshots();
 
   @override
   void initState() {
@@ -46,6 +49,9 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
+    var size = MediaQuery.of(context).size;
+    final double itemHeight = (size.height - kToolbarHeight - 24) / 2.5;
+    final double itemWidth = size.width / 2;
     return Scaffold(
       backgroundColor: white,
       body: SingleChildScrollView(
@@ -165,6 +171,45 @@ class _HomeScreenState extends State<HomeScreen> {
               style: appbarTitle,
             ),
             kHeight25,
+            StreamBuilder<QuerySnapshot>(
+                stream: _productstream,
+                builder: (context, snapshot) {
+                  if (snapshot.hasData) {
+                    final List<DocumentSnapshot> documents =
+                        snapshot.data!.docs;
+                    return GridView.builder(
+                      shrinkWrap: true,
+                      physics: const NeverScrollableScrollPhysics(),
+                      itemCount: documents.length,
+                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 2,
+                        childAspectRatio: (itemWidth / itemHeight),
+                        crossAxisSpacing: 16.0,
+                        mainAxisSpacing: 16.0,
+                      ),
+                      itemBuilder: ((context, index) {
+                        return ProductTile(
+                          id: documents[index].get('id'),
+                          productName: documents[index].get('productName'),
+                          subName: documents[index].get('subName'),
+                          category: documents[index].get('category'),
+                          description: documents[index].get('description'),
+                          quantity: documents[index].get('quantity'),
+                          color: documents[index].get('color'),
+                          price: documents[index].get('price'),
+                          image: documents[index].get('image'),
+                        );
+                      }),
+                    );
+                  } else if (snapshot.hasError) {
+                    return Text("Error : ${snapshot.error}");
+                  } else if (snapshot.connectionState ==
+                      ConnectionState.waiting) {
+                    return const ShimmerEffect();
+                  } else {
+                    return const ShimmerEffect();
+                  }
+                }),
           ],
         ),
       ),

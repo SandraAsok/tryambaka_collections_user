@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:tryambaka_user/data/color/colors.dart';
 import 'package:tryambaka_user/data/constants/constants.dart';
@@ -91,7 +90,7 @@ class ProductTile extends StatelessWidget {
               ),
             ),
             Text(
-              price,
+              '$price/-',
               style: const TextStyle(
                   letterSpacing: 0.5,
                   fontSize: 15,

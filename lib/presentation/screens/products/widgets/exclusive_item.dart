@@ -50,13 +50,21 @@ class ExclusiveItem extends StatelessWidget {
         child: Column(
           children: [
             Container(
-              width: 180,
-              height: 180,
+              width: 200,
+              height: 300,
               decoration: BoxDecoration(
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black.withOpacity(0.2),
+                    spreadRadius: 2,
+                    blurRadius: 2,
+                    offset: const Offset(0, 4),
+                  ),
+                ],
                 borderRadius: BorderRadius.circular(25),
                 image: DecorationImage(
                   image: NetworkImage(image[0]),
-                  fit: BoxFit.contain,
+                  fit: BoxFit.cover,
                 ),
               ),
               child: Stack(
@@ -80,20 +88,23 @@ class ExclusiveItem extends StatelessWidget {
               ),
             ),
             kHeight10,
-            Text(
-              productName,
-              overflow: TextOverflow.ellipsis,
-              maxLines: 1,
-              style: const TextStyle(
-                letterSpacing: 0.5,
-                fontSize: 20,
-                color: blackfont,
-                fontWeight: FontWeight.bold,
+            SizedBox(
+              height: 25,
+              width: 180,
+              child: Text(
+                productName,
+                overflow: TextOverflow.ellipsis,
+                maxLines: 1,
+                style: const TextStyle(
+                  fontSize: 18,
+                  color: blackfont,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
             ),
             kHeight5,
             Text(
-              "$price/-",
+              "₹$price/-",
               style: const TextStyle(
                   letterSpacing: 0.5,
                   fontSize: 18,

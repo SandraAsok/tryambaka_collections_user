@@ -4,7 +4,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:tryambaka_user/data/color/colors.dart';
-import 'package:tryambaka_user/presentation/screens/home/widgets/category_home.dart';
+import 'package:tryambaka_user/presentation/screens/category/widgets/category_home.dart';
 import 'package:tryambaka_user/presentation/screens/products/widgets/exclusive_item.dart';
 import 'package:tryambaka_user/presentation/screens/products/exclusive_screen.dart';
 import 'package:tryambaka_user/presentation/screens/products/widgets/product_tile.dart';
@@ -50,7 +50,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
-    final double itemHeight = (size.height - kToolbarHeight - 24) / 2.5;
+    final double itemHeight = (size.height - kToolbarHeight - 24) / 2;
     final double itemWidth = size.width / 2;
     return Scaffold(
       backgroundColor: white,
@@ -70,7 +70,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 IconButton(
                   onPressed: () {},
                   icon: const Icon(
-                    CupertinoIcons.heart,
+                    CupertinoIcons.heart_fill,
                     color: black,
                     size: 30,
                   ),
@@ -79,7 +79,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 IconButton(
                   onPressed: () {},
                   icon: const Icon(
-                    CupertinoIcons.cart,
+                    CupertinoIcons.cart_fill,
                     color: black,
                     size: 30,
                   ),
@@ -88,7 +88,10 @@ class _HomeScreenState extends State<HomeScreen> {
               ],
             ),
             kHeight25,
-            const CustomSearchWidget(),
+            const Padding(
+              padding: EdgeInsets.all(15.0),
+              child: CustomSearchWidget(),
+            ),
             kHeight10,
             Row(
               children: [
@@ -111,7 +114,7 @@ class _HomeScreenState extends State<HomeScreen> {
             kHeight10,
             SingleChildScrollView(
               child: SizedBox(
-                height: 290,
+                height: 400,
                 child: StreamBuilder<QuerySnapshot>(
                     stream: _exclusiveproductstream,
                     builder: (context, snapshot) {
@@ -155,13 +158,14 @@ class _HomeScreenState extends State<HomeScreen> {
             const Row(
               children: [
                 Spacer(),
-                CategoryMen(),
+                CategoryCircle(category: 'Men', url: 'assets/images/men.jpg'),
                 Spacer(),
-                CategoryWoman(),
+                CategoryCircle(
+                    category: 'Woman', url: 'assets/images/woman.jpeg'),
                 Spacer(),
-                CategoryBoy(),
+                CategoryCircle(category: 'Boy', url: 'assets/images/boy.webp'),
                 Spacer(),
-                CategoryGirl(),
+                CategoryCircle(category: 'Girl', url: 'assets/images/girl.jpg'),
                 Spacer(),
               ],
             ),
@@ -184,8 +188,8 @@ class _HomeScreenState extends State<HomeScreen> {
                       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                         crossAxisCount: 2,
                         childAspectRatio: (itemWidth / itemHeight),
-                        crossAxisSpacing: 16.0,
-                        mainAxisSpacing: 16.0,
+                        crossAxisSpacing: 5.0,
+                        mainAxisSpacing: 20.0,
                       ),
                       itemBuilder: ((context, index) {
                         return ProductTile(

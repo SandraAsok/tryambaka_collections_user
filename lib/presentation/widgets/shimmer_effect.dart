@@ -21,7 +21,7 @@ class ShimmerEffect extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Shimmer(
-              gradient: const LinearGradient(colors: [black, white, black]),
+              gradient: const LinearGradient(colors: [white, white, white]),
               child: Container(
                 height: 180,
               ),
@@ -30,7 +30,7 @@ class ShimmerEffect extends StatelessWidget {
               height: 5,
             ),
             Shimmer(
-              gradient: const LinearGradient(colors: [black, white, black]),
+              gradient: const LinearGradient(colors: [white, white, white]),
               child: Container(
                 height: 10,
               ),
@@ -39,7 +39,7 @@ class ShimmerEffect extends StatelessWidget {
               height: 5,
             ),
             Shimmer(
-              gradient: const LinearGradient(colors: [black, white, black]),
+              gradient: const LinearGradient(colors: [white, white, white]),
               child: Container(
                 height: 10,
               ),
@@ -48,7 +48,7 @@ class ShimmerEffect extends StatelessWidget {
               height: 5,
             ),
             Shimmer(
-              gradient: const LinearGradient(colors: [black, white, black]),
+              gradient: const LinearGradient(colors: [white, white, white]),
               child: Container(
                 height: 10,
               ),
@@ -57,7 +57,7 @@ class ShimmerEffect extends StatelessWidget {
               height: 5,
             ),
             const Shimmer(
-              gradient: LinearGradient(colors: [black, white, black]),
+              gradient: LinearGradient(colors: [white, white, white]),
               child: SizedBox(
                 height: 30,
                 width: 100,

@@ -5,21 +5,17 @@ import 'package:tryambaka_user/data/constants/constants.dart';
 import 'package:tryambaka_user/presentation/screens/products/widgets/product_tile.dart';
 import 'package:tryambaka_user/presentation/widgets/shimmer_effect.dart';
 
-class MenCategory extends StatefulWidget {
-  const MenCategory({super.key});
+class CategoryTile extends StatefulWidget {
+  const CategoryTile({super.key, required this.category});
+  final String category;
 
   @override
-  State<MenCategory> createState() => _MenCategoryState();
+  State<CategoryTile> createState() => _CategoryTileState();
 }
 
-class _MenCategoryState extends State<MenCategory> {
+class _CategoryTileState extends State<CategoryTile> {
   ScrollController _scrollController = ScrollController();
   int _currentImageIndex = 1;
-  final Stream<QuerySnapshot> _menproductstream = FirebaseFirestore.instance
-      .collection('products')
-      .where('category', isEqualTo: 'Men')
-      //.where('type',isEqualTo: 'shirt')
-      .snapshots();
 
   @override
   void initState() {
@@ -42,26 +38,23 @@ class _MenCategoryState extends State<MenCategory> {
 
   @override
   Widget build(BuildContext context) {
+    String category = widget.category;
     var size = MediaQuery.of(context).size;
     final double productHeight = (size.height - kToolbarHeight - 24) / 5;
     final double productWidth = size.width / 2;
     return SafeArea(
       child: Scaffold(
         backgroundColor: bgcolor,
-        appBar: AppBar(
-          backgroundColor: bgcolor,
-          title: Text(
-            "Men Collections",
-            style: appbarTitle,
-          ),
-        ),
         body: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               kHeight10,
               StreamBuilder<QuerySnapshot>(
-                stream: _menproductstream,
+                stream: FirebaseFirestore.instance
+                    .collection('products')
+                    .where('category', isEqualTo: category)
+                    .snapshots(),
                 builder: (context, snapshot) {
                   if (snapshot.hasData) {
                     final List<DocumentSnapshot> documents =

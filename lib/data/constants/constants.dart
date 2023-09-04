@@ -24,6 +24,8 @@ const kHeight10 = SizedBox(height: 10);
 const kHeight5 = SizedBox(height: 5);
 
 const kWidth25 = SizedBox(width: 25);
+const kwidth10 = SizedBox(width: 10);
+const kwidth20 = SizedBox(width: 20);
 
 // ignore: unused_element
 final List<String> _adImages = [

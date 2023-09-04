@@ -13,7 +13,7 @@ class ExclusiveScreen extends StatefulWidget {
 }
 
 class _ExclusiveScreenState extends State<ExclusiveScreen> {
-  ScrollController _scrollController = ScrollController();
+  final ScrollController _scrollController = ScrollController();
   int _currentImageIndex = 1;
   final Stream<QuerySnapshot> _exclusiveproductstream =
       FirebaseFirestore.instance.collection('exclusive').snapshots();
@@ -40,23 +40,38 @@ class _ExclusiveScreenState extends State<ExclusiveScreen> {
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
-    final double productHeight = (size.height - kToolbarHeight - 24) / 5;
+    final double productHeight = (size.height - kToolbarHeight - 24) / 6.5;
     final double productWidth = size.width / 2;
     return SafeArea(
       child: Scaffold(
         backgroundColor: bgcolor,
-        appBar: AppBar(
-          backgroundColor: bgcolor,
-          title: Text(
-            "\t\t Tryambaka Designs",
-            style: appbarTitle,
-          ),
-        ),
         body: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               kHeight10,
+              Row(
+                children: [
+                  Text(
+                    "Tryambaka Designs",
+                    style: appbarTitle,
+                  ),
+                  const Spacer(),
+                  IconButton(
+                      onPressed: () {},
+                      icon: const Icon(
+                        Icons.search,
+                        size: 25,
+                      )),
+                  IconButton(
+                      onPressed: () {},
+                      icon: const Icon(
+                        Icons.favorite_border,
+                        size: 25,
+                      )),
+                ],
+              ),
+              kHeight25,
               StreamBuilder<QuerySnapshot>(
                 stream: _exclusiveproductstream,
                 builder: (context, snapshot) {

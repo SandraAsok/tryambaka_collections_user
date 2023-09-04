@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:tryambaka_user/data/color/colors.dart';
 import 'package:tryambaka_user/data/constants/constants.dart';
 
-class ProductTile extends StatelessWidget {
+class ProductTile extends StatefulWidget {
   final String id;
   final String productName;
   final String subName;
@@ -27,6 +27,11 @@ class ProductTile extends StatelessWidget {
   });
 
   @override
+  State<ProductTile> createState() => _ProductTileState();
+}
+
+class _ProductTileState extends State<ProductTile> {
+  @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(8.0),
@@ -48,13 +53,21 @@ class ProductTile extends StatelessWidget {
         child: Column(
           children: [
             Container(
-              width: 180,
-              height: 180,
+              width: 200,
+              height: 300,
               decoration: BoxDecoration(
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black.withOpacity(0.2),
+                    spreadRadius: 2,
+                    blurRadius: 2,
+                    offset: const Offset(0, 5),
+                  ),
+                ],
                 borderRadius: BorderRadius.circular(25),
                 image: DecorationImage(
-                  image: NetworkImage(image[0]),
-                  fit: BoxFit.contain,
+                  image: NetworkImage(widget.image[0]),
+                  fit: BoxFit.cover,
                 ),
               ),
               child: Stack(
@@ -79,18 +92,18 @@ class ProductTile extends StatelessWidget {
             ),
             kHeight10,
             Text(
-              productName,
+              widget.productName,
               overflow: TextOverflow.ellipsis,
               maxLines: 1,
               style: const TextStyle(
                 letterSpacing: 0.5,
-                fontSize: 20,
+                fontSize: 18,
                 color: blackfont,
                 fontWeight: FontWeight.bold,
               ),
             ),
             Text(
-              '$price/-',
+              '₹${widget.price}/-',
               style: const TextStyle(
                   letterSpacing: 0.5,
                   fontSize: 15,

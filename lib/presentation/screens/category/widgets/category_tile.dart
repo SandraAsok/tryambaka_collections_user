@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:tryambaka_user/data/color/colors.dart';
 import 'package:tryambaka_user/data/constants/constants.dart';
 import 'package:tryambaka_user/presentation/screens/products/widgets/product_tile.dart';
+import 'package:tryambaka_user/presentation/screens/search/widgets/search_widget.dart';
 import 'package:tryambaka_user/presentation/widgets/shimmer_effect.dart';
 
 class CategoryTile extends StatefulWidget {
@@ -40,7 +41,7 @@ class _CategoryTileState extends State<CategoryTile> {
   Widget build(BuildContext context) {
     String category = widget.category;
     var size = MediaQuery.of(context).size;
-    final double productHeight = (size.height - kToolbarHeight - 24) / 5;
+    final double productHeight = (size.height - kToolbarHeight - 24) / 6;
     final double productWidth = size.width / 2;
     return SafeArea(
       child: Scaffold(
@@ -49,7 +50,12 @@ class _CategoryTileState extends State<CategoryTile> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              kHeight10,
+              kHeight25,
+              Padding(
+                padding: const EdgeInsets.only(left: 25, right: 25),
+                child: CustomSearchWidget(),
+              ),
+              kHeight25,
               StreamBuilder<QuerySnapshot>(
                 stream: FirebaseFirestore.instance
                     .collection('products')

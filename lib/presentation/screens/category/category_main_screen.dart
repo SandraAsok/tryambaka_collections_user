@@ -60,28 +60,36 @@ class _CategoryMainScreenState extends State<CategoryMainScreen> {
                   ],
                 ),
                 kHeight10,
-                const Row(
+                Row(
                   children: [
-                    CategoryGuestureDetector(assetUrl: "assets/images/men.jpg"),
+                    CategoryGuestureDetector(
+                      assetUrl: "assets/images/men.jpg",
+                      category: 'Men',
+                    ),
                     Spacer(),
                     CategoryGuestureDetector(
-                        assetUrl: "assets/images/woman.jpeg"),
+                      assetUrl: "assets/images/woman.jpeg",
+                      category: 'Woman',
+                    ),
                   ],
                 ),
                 kHeight10,
-                const Row(
+                Row(
                   children: [
                     CategoryGuestureDetector(
-                        assetUrl: "assets/images/boy.webp"),
+                      assetUrl: "assets/images/boy.webp",
+                      category: 'Boy',
+                    ),
                     Spacer(),
                     CategoryGuestureDetector(
                       assetUrl: "assets/images/girl.jpg",
+                      category: 'Girl',
                     ),
                   ],
                 ),
                 kHeight25,
                 Text(
-                  "Wear the altered reality", 
+                  "Wear the altered reality",
                   style: appbarTitle,
                 ),
                 kHeight10,

@@ -154,7 +154,7 @@ class _HomeScreenState extends State<HomeScreen> {
               "\t\tCategories",
               style: appbarTitle,
             ),
-            kHeight10,
+            kHeight25,
             const Row(
               children: [
                 Spacer(),

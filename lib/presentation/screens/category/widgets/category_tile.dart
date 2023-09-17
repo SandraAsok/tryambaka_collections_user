@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_final_fields
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:tryambaka_user/data/color/colors.dart';
@@ -51,8 +53,8 @@ class _CategoryTileState extends State<CategoryTile> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               kHeight25,
-              Padding(
-                padding: const EdgeInsets.only(left: 25, right: 25),
+              const Padding(
+                padding: EdgeInsets.only(left: 25, right: 25),
                 child: CustomSearchWidget(),
               ),
               kHeight25,

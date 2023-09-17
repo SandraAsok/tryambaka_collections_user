@@ -1,6 +1,8 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:tryambaka_user/data/color/colors.dart';
 import 'package:tryambaka_user/data/constants/constants.dart';
+import 'package:tryambaka_user/presentation/screens/detail/product_detail_screen.dart';
 
 class ProductTile extends StatefulWidget {
   final String id;
@@ -37,18 +39,18 @@ class _ProductTileState extends State<ProductTile> {
       padding: const EdgeInsets.all(8.0),
       child: GestureDetector(
         onTap: () {
-          // Navigator.of(context).push(CupertinoPageRoute(
-          //     builder: (context) => productDetails(
-          //           id: id,
-          //           productName: productName,
-          //           subName: subName,
-          //           category: category,
-          //           description: description,
-          //           quantity: quantity,
-          //           color: color,
-          //           price: price,
-          //           image: image,
-          //         )));
+          Navigator.of(context).push(CupertinoPageRoute(
+            builder: (context) => ProductDetailScreen(
+              id: widget.id,
+              productName: widget.productName,
+              subName: widget.subName,
+              price: widget.price,
+              color: widget.color,
+              description: widget.description,
+              image: widget.image,
+              quantity: widget.quantity,
+            ),
+          ));
         },
         child: Column(
           children: [

@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:tryambaka_user/data/color/colors.dart';
 import 'package:tryambaka_user/data/constants/constants.dart';
-import 'package:tryambaka_user/presentation/screens/products/widgets/exclusive_details.dart';
+import 'package:tryambaka_user/presentation/screens/detail/product_detail_screen.dart';
 
 class ExclusiveItem extends StatelessWidget {
   final String id;
@@ -35,11 +35,10 @@ class ExclusiveItem extends StatelessWidget {
       child: GestureDetector(
         onTap: () {
           Navigator.of(context).push(CupertinoPageRoute(
-              builder: (context) => ExclusiveDetails(
+              builder: (context) => ProductDetailScreen(
                     id: id,
                     productName: productName,
                     subName: subName,
-                    category: category,
                     description: description,
                     quantity: quantity,
                     color: color,

@@ -1,82 +1,45 @@
 import 'dart:developer';
 
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_carousel_widget/flutter_carousel_widget.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'package:tryambaka_user/core/color/colors.dart';
 import 'package:tryambaka_user/core/constants/constants.dart';
-import 'package:tryambaka_user/core/functions/firebase_functions.dart';
-import 'package:tryambaka_user/domain/cartmodel.dart';
 
-class ProductDetailScreen extends StatefulWidget {
+class CartDetails extends StatefulWidget {
   final String id;
   final String productName;
   final String subName;
   final String description;
-  final String quantity;
   final String color;
-  final String price;
+  final int price;
   final List<dynamic> image;
-  const ProductDetailScreen({
+  const CartDetails({
     super.key,
     required this.id,
     required this.productName,
     required this.subName,
     required this.description,
-    required this.quantity,
     required this.color,
     required this.price,
     required this.image,
   });
 
   @override
-  State<ProductDetailScreen> createState() => _ProductDetailScreenState();
+  State<CartDetails> createState() => _CartDetailsState();
 }
 
 String? _selectedsize;
 final List<String> _sizes = ['S', 'M', 'L', 'XL', 'XXL'];
 
-class _ProductDetailScreenState extends State<ProductDetailScreen> {
+class _CartDetailsState extends State<CartDetails> {
   List imageList = [];
-  late SharedPreferences _preferences;
-  bool isAddedToCart = false;
 
   @override
   void initState() {
     imageList = widget.image;
     log(imageList.toString());
     super.initState();
-    _loadAddedToCartState();
-  }
-
-  Future<void> _loadAddedToCartState() async {
-    _preferences = await SharedPreferences.getInstance();
-    setState(() {
-      isAddedToCart = _preferences.getBool(widget.id) ?? false;
-    });
-  }
-
-  Future<void> _saveCartState() async {
-    setState(() {
-      isAddedToCart = true;
-    });
-
-    _preferences.setBool(widget.id, true);
-
-    addToCart(
-        Cart(
-          productName: widget.productName,
-          subName: widget.subName,
-          price: int.parse(widget.price),
-          color: widget.color,
-          description: widget.description,
-          id: widget.id,
-          userId: FirebaseAuth.instance.currentUser!.email!,
-          imageList: imageList,
-        ),
-        context);
   }
 
   @override
@@ -340,30 +303,6 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
               padding: const EdgeInsets.all(8.0),
               child: Row(
                 children: [
-                  const Spacer(),
-                  ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        padding: EdgeInsets.symmetric(
-                            horizontal: size.width / 8, vertical: 15),
-                        backgroundColor: Colors.black,
-                        foregroundColor: Colors.white,
-                      ),
-                      onPressed: isAddedToCart ? null : _saveCartState,
-                      child: Row(
-                        children: [
-                          const Icon(CupertinoIcons.cart),
-                          kwidth10,
-                          Text(
-                            isAddedToCart ? 'Go to cart' : 'Add to cart',
-                            style: const TextStyle(
-                              letterSpacing: .5,
-                              fontSize: 14,
-                              color: Colors.white,
-                              fontWeight: FontWeight.w700,
-                            ),
-                          ),
-                        ],
-                      )),
                   const Spacer(),
                   ElevatedButton(
                       onPressed: () {},

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shimmer/shimmer.dart';
-import 'package:tryambaka_user/data/color/colors.dart';
+import 'package:tryambaka_user/core/color/colors.dart';
 
 class ShimmerEffect extends StatelessWidget {
   const ShimmerEffect({

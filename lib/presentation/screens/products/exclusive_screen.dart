@@ -1,7 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:tryambaka_user/data/color/colors.dart';
-import 'package:tryambaka_user/data/constants/constants.dart';
+import 'package:tryambaka_user/core/color/colors.dart';
+import 'package:tryambaka_user/core/constants/constants.dart';
 import 'package:tryambaka_user/presentation/screens/products/widgets/exclusive_item.dart';
 import 'package:tryambaka_user/presentation/widgets/shimmer_effect.dart';
 
@@ -66,7 +67,7 @@ class _ExclusiveScreenState extends State<ExclusiveScreen> {
                   IconButton(
                       onPressed: () {},
                       icon: const Icon(
-                        Icons.favorite_border,
+                        CupertinoIcons.cart_fill,
                         size: 25,
                       )),
                 ],

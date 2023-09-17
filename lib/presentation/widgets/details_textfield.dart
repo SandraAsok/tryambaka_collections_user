@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:tryambaka_user/data/constants/constants.dart';
+import 'package:tryambaka_user/core/constants/constants.dart';
 
-import '../../data/color/colors.dart';
+import '../../core/color/colors.dart';
 
 class DetailsTextFieldWidget extends StatelessWidget {
   const DetailsTextFieldWidget({

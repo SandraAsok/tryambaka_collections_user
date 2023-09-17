@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tryambaka_user/data/color/colors.dart';
+import 'package:tryambaka_user/core/color/colors.dart';
 
 class LoginBackground extends StatelessWidget {
   const LoginBackground({

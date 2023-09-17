@@ -3,8 +3,8 @@
 import 'package:email_validator/email_validator.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:tryambaka_user/data/color/colors.dart';
-import 'package:tryambaka_user/data/constants/constants.dart';
+import 'package:tryambaka_user/core/color/colors.dart';
+import 'package:tryambaka_user/core/constants/constants.dart';
 import 'package:tryambaka_user/main.dart';
 import 'package:tryambaka_user/presentation/screens/login/widgets/login_background.dart';
 import 'package:tryambaka_user/presentation/screens/login/widgets/textfield_signup.dart';

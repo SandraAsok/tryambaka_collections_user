@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:tryambaka_user/data/color/colors.dart';
+import 'package:tryambaka_user/core/color/colors.dart';
 
 class CustomSearchWidget extends StatelessWidget {
   //final void Function(String query) onChanged;

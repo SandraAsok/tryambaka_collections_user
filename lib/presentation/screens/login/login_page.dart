@@ -1,9 +1,9 @@
 import 'package:email_validator/email_validator.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:tryambaka_user/data/color/colors.dart';
-import 'package:tryambaka_user/data/constants/constants.dart';
-import 'package:tryambaka_user/data/functions/functions.dart';
+import 'package:tryambaka_user/core/color/colors.dart';
+import 'package:tryambaka_user/core/constants/constants.dart';
+import 'package:tryambaka_user/core/functions/functions.dart';
 import 'package:tryambaka_user/presentation/screens/login/sign_up_screen.dart';
 import 'package:tryambaka_user/presentation/screens/login/widgets/forgot_password.dart';
 import 'package:tryambaka_user/presentation/screens/login/widgets/login_background.dart';

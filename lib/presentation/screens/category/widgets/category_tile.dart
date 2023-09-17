@@ -2,8 +2,8 @@
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:tryambaka_user/data/color/colors.dart';
-import 'package:tryambaka_user/data/constants/constants.dart';
+import 'package:tryambaka_user/core/color/colors.dart';
+import 'package:tryambaka_user/core/constants/constants.dart';
 import 'package:tryambaka_user/presentation/screens/products/widgets/product_tile.dart';
 import 'package:tryambaka_user/presentation/screens/search/widgets/search_widget.dart';
 import 'package:tryambaka_user/presentation/widgets/shimmer_effect.dart';

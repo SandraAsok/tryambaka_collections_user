@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tryambaka_user/data/color/colors.dart';
+import 'package:tryambaka_user/core/color/colors.dart';
 
 // ignore: must_be_immutable
 class MainButton extends StatelessWidget {

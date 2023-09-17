@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:tryambaka_user/data/color/colors.dart';
+import 'package:tryambaka_user/core/color/colors.dart';
 import 'package:tryambaka_user/presentation/screens/account/my_account.dart';
 import 'package:tryambaka_user/presentation/screens/category/category_main_screen.dart';
 import 'package:tryambaka_user/presentation/screens/home/home_screen.dart';

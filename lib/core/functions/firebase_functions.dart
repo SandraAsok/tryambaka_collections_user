@@ -40,3 +40,21 @@ Future<void> addToCart(Cart cartmodel, BuildContext context) async {
     log("Failed to add product : $e");
   }
 }
+
+Future<void> removeCart(String id, BuildContext context) {
+  CollectionReference cartItem = FirebaseFirestore.instance.collection('cart');
+
+  return cartItem.doc(id).delete().then((value) {
+    log('Removed from cart');
+    SnackBar(
+      content: const Text("Product removed from cart"),
+      action: SnackBarAction(
+          label: 'Dismiss',
+          onPressed: () {
+            ScaffoldMessenger.of(context).hideCurrentSnackBar();
+          }),
+    );
+  }).catchError((error) {
+    log("Failed to remove item from cart : $error");
+  });
+}

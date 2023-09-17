@@ -3,14 +3,15 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:tryambaka_user/data/color/colors.dart';
+import 'package:tryambaka_user/core/color/colors.dart';
+import 'package:tryambaka_user/presentation/screens/cart/cart_screen.dart';
 import 'package:tryambaka_user/presentation/screens/category/widgets/category_home.dart';
 import 'package:tryambaka_user/presentation/screens/products/widgets/exclusive_item.dart';
 import 'package:tryambaka_user/presentation/screens/products/exclusive_screen.dart';
 import 'package:tryambaka_user/presentation/screens/products/widgets/product_tile.dart';
 import 'package:tryambaka_user/presentation/widgets/shimmer_effect.dart';
 
-import '../../../data/constants/constants.dart';
+import '../../../core/constants/constants.dart';
 import '../search/widgets/search_widget.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -68,16 +69,10 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
                 const Spacer(),
                 IconButton(
-                  onPressed: () {},
-                  icon: const Icon(
-                    CupertinoIcons.heart_fill,
-                    color: black,
-                    size: 30,
-                  ),
-                ),
-                kWidth25,
-                IconButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.of(context).push(
+                        CupertinoPageRoute(builder: (context) => CartScreen()));
+                  },
                   icon: const Icon(
                     CupertinoIcons.cart_fill,
                     color: black,

@@ -72,25 +72,6 @@ class _ProductTileState extends State<ProductTile> {
                   fit: BoxFit.cover,
                 ),
               ),
-              child: Stack(
-                children: [
-                  Positioned(
-                    left: 145,
-                    top: 0,
-                    child: Row(
-                      children: [
-                        IconButton(
-                            onPressed: () {},
-                            icon: const Icon(
-                              Icons.favorite,
-                              color: black,
-                              size: 25,
-                            )),
-                      ],
-                    ),
-                  )
-                ],
-              ),
             ),
             kHeight10,
             Text(

@@ -1,10 +1,14 @@
 import 'dart:developer';
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_carousel_widget/flutter_carousel_widget.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:tryambaka_user/data/color/colors.dart';
 import 'package:tryambaka_user/data/constants/constants.dart';
+import 'package:tryambaka_user/data/functions/firebase_functions.dart';
+import 'package:tryambaka_user/domain/cartmodel.dart';
 
 class ProductDetailScreen extends StatefulWidget {
   final String id;
@@ -36,12 +40,43 @@ final List<String> _sizes = ['S', 'M', 'L', 'XL', 'XXL'];
 
 class _ProductDetailScreenState extends State<ProductDetailScreen> {
   List imageList = [];
+  late SharedPreferences _preferences;
+  bool isAddedToCart = false;
 
   @override
   void initState() {
     imageList = widget.image;
     log(imageList.toString());
     super.initState();
+    _loadAddedToCartState();
+  }
+
+  Future<void> _loadAddedToCartState() async {
+    _preferences = await SharedPreferences.getInstance();
+    setState(() {
+      isAddedToCart = _preferences.getBool(widget.id) ?? false;
+    });
+  }
+
+  Future<void> _saveCartState() async {
+    setState(() {
+      isAddedToCart = true;
+    });
+
+    _preferences.setBool(widget.id, true);
+
+    addToCart(
+        Cart(
+          productName: widget.productName,
+          subName: widget.subName,
+          price: int.parse(widget.price),
+          color: widget.color,
+          description: widget.description,
+          id: widget.id,
+          userId: FirebaseAuth.instance.currentUser!.email!,
+          imageList: imageList,
+        ),
+        context);
   }
 
   @override
@@ -307,6 +342,30 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                 children: [
                   const Spacer(),
                   ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        padding: EdgeInsets.symmetric(
+                            horizontal: size.width / 8, vertical: 15),
+                        backgroundColor: Colors.black,
+                        foregroundColor: Colors.white,
+                      ),
+                      onPressed: isAddedToCart ? null : _saveCartState,
+                      child: Row(
+                        children: [
+                          const Icon(CupertinoIcons.cart),
+                          kwidth10,
+                          Text(
+                            isAddedToCart ? 'Go to cart' : 'Add to cart',
+                            style: const TextStyle(
+                              letterSpacing: .5,
+                              fontSize: 14,
+                              color: Colors.white,
+                              fontWeight: FontWeight.w700,
+                            ),
+                          ),
+                        ],
+                      )),
+                  const Spacer(),
+                  ElevatedButton(
                       onPressed: () {},
                       style: ElevatedButton.styleFrom(
                         padding: EdgeInsets.symmetric(
@@ -320,30 +379,6 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                           kwidth10,
                           Text(
                             'Buy Now',
-                            style: TextStyle(
-                              letterSpacing: .5,
-                              fontSize: 14,
-                              color: Colors.white,
-                              fontWeight: FontWeight.w700,
-                            ),
-                          ),
-                        ],
-                      )),
-                  const Spacer(),
-                  ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        padding: EdgeInsets.symmetric(
-                            horizontal: size.width / 8, vertical: 15),
-                        backgroundColor: Colors.black,
-                        foregroundColor: Colors.white,
-                      ),
-                      onPressed: () {},
-                      child: const Row(
-                        children: [
-                          Icon(CupertinoIcons.cart),
-                          kwidth10,
-                          Text(
-                            'Add to cart',
                             style: TextStyle(
                               letterSpacing: .5,
                               fontSize: 14,

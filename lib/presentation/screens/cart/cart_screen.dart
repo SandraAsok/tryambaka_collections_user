@@ -7,8 +7,6 @@ import 'package:tryambaka_user/core/constants/constants.dart';
 import 'package:tryambaka_user/presentation/screens/cart/widgets/cart_detail.dart';
 import 'package:tryambaka_user/presentation/widgets/shimmer_effect.dart';
 
-ValueNotifier<num> totalPriceNotifier = ValueNotifier(0);
-
 class CartScreen extends StatefulWidget {
   const CartScreen({super.key});
 
@@ -18,8 +16,10 @@ class CartScreen extends StatefulWidget {
 
 class _CartScreenState extends State<CartScreen> {
   String email = FirebaseAuth.instance.currentUser!.email!;
+
   @override
   Widget build(BuildContext context) {
+    var size = MediaQuery.of(context).size;
     return SafeArea(
       child: Scaffold(
         backgroundColor: bgcolor,
@@ -79,28 +79,23 @@ class _CartScreenState extends State<CartScreen> {
                                   style: const TextStyle(
                                       color: black, fontSize: 18),
                                 ),
-                                // trailing: IconButton(
-                                //     onPressed: () {
-
-                                //     },
-                                //     icon: const Icon(
-                                //       Icons.delete,
-                                //       color: black,
-                                //     )),
                                 onTap: () {
-                                  Navigator.of(context).push(CupertinoPageRoute(
-                                    builder: (context) => CartDetails(
-                                      id: documents[index].get('id'),
-                                      productName:
-                                          documents[index].get('productName'),
-                                      subName: documents[index].get('subName'),
-                                      description:
-                                          documents[index].get('description'),
-                                      color: documents[index].get('color'),
-                                      price: documents[index].get('price'),
-                                      image: documents[index].get('image'),
+                                  Navigator.of(context).push(
+                                    CupertinoPageRoute(
+                                      builder: (context) => CartDetails(
+                                        id: documents[index].get('id'),
+                                        productName:
+                                            documents[index].get('productName'),
+                                        subName:
+                                            documents[index].get('subName'),
+                                        description:
+                                            documents[index].get('description'),
+                                        color: documents[index].get('color'),
+                                        price: documents[index].get('price'),
+                                        image: documents[index].get('image'),
+                                      ),
                                     ),
-                                  ));
+                                  );
                                 },
                               );
                             },
@@ -123,6 +118,56 @@ class _CartScreenState extends State<CartScreen> {
               ),
             ],
           ),
+        ),
+        bottomSheet: StreamBuilder<QuerySnapshot>(
+          stream: FirebaseFirestore.instance
+              .collection('cart')
+              .where('userId', isEqualTo: email)
+              .snapshots(),
+          builder: (context, snapshot) {
+            if (snapshot.hasData) {
+              final List<DocumentSnapshot> documents = snapshot.data!.docs;
+              num totalPrice = 0;
+              for (DocumentSnapshot doc in documents) {
+                totalPrice += doc.get('price');
+              }
+              return Row(
+                children: [
+                  const Spacer(),
+                  Text(
+                    'Total: ₹${totalPrice.toStringAsFixed(2)}',
+                    style: const TextStyle(
+                        fontSize: 25, fontWeight: FontWeight.bold),
+                  ),
+                  const Spacer(),
+                  ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      padding: EdgeInsets.symmetric(
+                          horizontal: size.width / 10, vertical: 15),
+                      backgroundColor: black,
+                      foregroundColor: white,
+                    ),
+                    onPressed: () {},
+                    child: const Text(
+                      'Proceed to Buy',
+                      style: TextStyle(
+                        letterSpacing: .5,
+                        fontSize: 18,
+                        color: white,
+                        fontWeight: FontWeight.w700,
+                      ),
+                    ),
+                  ),
+                ],
+              );
+            } else if (snapshot.hasError) {
+              return Text("Error : ${snapshot.error}");
+            } else if (snapshot.connectionState == ConnectionState.waiting) {
+              return const ShimmerEffect();
+            } else {
+              return const ShimmerEffect();
+            }
+          },
         ),
       ),
     );

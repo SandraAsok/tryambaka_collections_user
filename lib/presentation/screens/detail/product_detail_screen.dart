@@ -378,7 +378,13 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                   ),
                   const Spacer(),
                   ElevatedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        // Navigator.of(context).push(CupertinoPageRoute(
+                        //   builder: (context) => PlaceOrderScreen(
+                        //       totalPrice: int.parse(widget.price),
+                        //       totalCount: 1.toString()),
+                        // ));
+                      },
                       style: ElevatedButton.styleFrom(
                         padding: EdgeInsets.symmetric(
                             horizontal: size.width / 8, vertical: 15),

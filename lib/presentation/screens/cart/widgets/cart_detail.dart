@@ -6,6 +6,8 @@ import 'package:flutter_carousel_widget/flutter_carousel_widget.dart';
 import 'package:tryambaka_user/core/color/colors.dart';
 import 'package:tryambaka_user/core/constants/constants.dart';
 
+import '../../../../core/functions/firebase_functions.dart';
+
 class CartDetails extends StatefulWidget {
   final String id;
   final String productName;
@@ -305,10 +307,37 @@ class _CartDetailsState extends State<CartDetails> {
                 children: [
                   const Spacer(),
                   ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        padding: EdgeInsets.symmetric(
+                            horizontal: size.width / 10, vertical: 15),
+                        backgroundColor: black,
+                        foregroundColor: white,
+                      ),
+                      onPressed: () {
+                        removeCart(widget.id, context);
+                        Navigator.of(context).pop();
+                      },
+                      child: const Row(
+                        children: [
+                          Icon(CupertinoIcons.delete),
+                          kwidth10,
+                          Text(
+                            'Remove Item',
+                            style: TextStyle(
+                              letterSpacing: .5,
+                              fontSize: 14,
+                              color: white,
+                              fontWeight: FontWeight.w700,
+                            ),
+                          ),
+                        ],
+                      )),
+                  const Spacer(),
+                  ElevatedButton(
                       onPressed: () {},
                       style: ElevatedButton.styleFrom(
                         padding: EdgeInsets.symmetric(
-                            horizontal: size.width / 8, vertical: 15),
+                            horizontal: size.width / 10, vertical: 15),
                         backgroundColor: black,
                         foregroundColor: white,
                       ),

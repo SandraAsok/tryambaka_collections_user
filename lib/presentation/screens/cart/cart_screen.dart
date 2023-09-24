@@ -4,7 +4,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:tryambaka_user/core/color/colors.dart';
 import 'package:tryambaka_user/core/constants/constants.dart';
-import 'package:tryambaka_user/core/functions/firebase_functions.dart';
 import 'package:tryambaka_user/presentation/screens/cart/widgets/cart_detail.dart';
 import 'package:tryambaka_user/presentation/widgets/shimmer_effect.dart';
 
@@ -80,16 +79,14 @@ class _CartScreenState extends State<CartScreen> {
                                   style: const TextStyle(
                                       color: black, fontSize: 18),
                                 ),
-                                trailing: IconButton(
-                                    onPressed: () {
-                                      removeCart(
-                                          documents[index].get('id').toString(),
-                                          context);
-                                    },
-                                    icon: const Icon(
-                                      Icons.delete,
-                                      color: black,
-                                    )),
+                                // trailing: IconButton(
+                                //     onPressed: () {
+
+                                //     },
+                                //     icon: const Icon(
+                                //       Icons.delete,
+                                //       color: black,
+                                //     )),
                                 onTap: () {
                                   Navigator.of(context).push(CupertinoPageRoute(
                                     builder: (context) => CartDetails(

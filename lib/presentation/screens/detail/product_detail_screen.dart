@@ -40,6 +40,7 @@ final List<String> _sizes = ['S', 'M', 'L', 'XL', 'XXL'];
 
 class _ProductDetailScreenState extends State<ProductDetailScreen> {
   List imageList = [];
+
   late SharedPreferences _preferences;
   bool isAddedToCart = false;
 
@@ -66,17 +67,27 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
     _preferences.setBool(widget.id, true);
 
     addToCart(
-        Cart(
-          productName: widget.productName,
-          subName: widget.subName,
-          price: int.parse(widget.price),
-          color: widget.color,
-          description: widget.description,
-          id: widget.id,
-          userId: FirebaseAuth.instance.currentUser!.email!,
-          imageList: imageList,
-        ),
-        context);
+      Cart(
+        productName: widget.productName,
+        subName: widget.subName,
+        price: int.parse(widget.price),
+        color: widget.color,
+        description: widget.description,
+        id: widget.id,
+        userId: FirebaseAuth.instance.currentUser!.email!,
+        imageList: imageList,
+      ),
+      context,
+    );
+  }
+
+  Future<void> _removeFromCart() async {
+    setState(() {
+      isAddedToCart = false;
+    });
+
+    _preferences.setBool(widget.id, false);
+    removeCart(widget.id, context);
   }
 
   @override
@@ -342,28 +353,29 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                 children: [
                   const Spacer(),
                   ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        padding: EdgeInsets.symmetric(
-                            horizontal: size.width / 8, vertical: 15),
-                        backgroundColor: Colors.black,
-                        foregroundColor: Colors.white,
-                      ),
-                      onPressed: isAddedToCart ? null : _saveCartState,
-                      child: Row(
-                        children: [
-                          const Icon(CupertinoIcons.cart),
-                          kwidth10,
-                          Text(
-                            isAddedToCart ? 'Go to cart' : 'Add to cart',
-                            style: const TextStyle(
-                              letterSpacing: .5,
-                              fontSize: 14,
-                              color: Colors.white,
-                              fontWeight: FontWeight.w700,
-                            ),
+                    style: ElevatedButton.styleFrom(
+                      padding: EdgeInsets.symmetric(
+                          horizontal: size.width / 8, vertical: 15),
+                      backgroundColor: black,
+                      foregroundColor: white,
+                    ),
+                    onPressed: isAddedToCart ? _removeFromCart : _saveCartState,
+                    child: Row(
+                      children: [
+                        const Icon(CupertinoIcons.cart),
+                        kwidth10,
+                        Text(
+                          isAddedToCart ? 'Delete item' : 'Add to cart',
+                          style: const TextStyle(
+                            letterSpacing: .5,
+                            fontSize: 14,
+                            color: white,
+                            fontWeight: FontWeight.w700,
                           ),
-                        ],
-                      )),
+                        ),
+                      ],
+                    ),
+                  ),
                   const Spacer(),
                   ElevatedButton(
                       onPressed: () {},

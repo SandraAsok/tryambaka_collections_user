@@ -60,28 +60,28 @@ class _CategoryMainScreenState extends State<CategoryMainScreen> {
                   ],
                 ),
                 kHeight10,
-                Row(
+                const Row(
                   children: [
-                    CategoryGuestureDetector(
+                    CategoryMenGuestureDetector(
                       assetUrl: "assets/images/men.jpg",
                       category: 'Men',
                     ),
                     Spacer(),
-                    CategoryGuestureDetector(
+                    CategoryWomanGuestureDetector(
                       assetUrl: "assets/images/woman.jpeg",
                       category: 'Woman',
                     ),
                   ],
                 ),
                 kHeight10,
-                Row(
+                const Row(
                   children: [
-                    CategoryGuestureDetector(
+                    CategoryBoyGuestureDetector(
                       assetUrl: "assets/images/boy.webp",
                       category: 'Boy',
                     ),
                     Spacer(),
-                    CategoryGuestureDetector(
+                    CategoryGirlGuestureDetector(
                       assetUrl: "assets/images/girl.jpg",
                       category: 'Girl',
                     ),

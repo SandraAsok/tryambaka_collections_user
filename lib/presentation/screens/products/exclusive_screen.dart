@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:tryambaka_user/core/color/colors.dart';
 import 'package:tryambaka_user/core/constants/constants.dart';
 import 'package:tryambaka_user/presentation/screens/products/widgets/exclusive_item.dart';
+import 'package:tryambaka_user/presentation/screens/search/exclusive_search_screen.dart';
 import 'package:tryambaka_user/presentation/widgets/shimmer_effect.dart';
 
 class ExclusiveScreen extends StatefulWidget {
@@ -59,7 +60,11 @@ class _ExclusiveScreenState extends State<ExclusiveScreen> {
                   ),
                   const Spacer(),
                   IconButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.of(context).push(CupertinoPageRoute(
+                            builder: (context) =>
+                                const ExclusiveSearchScreen()));
+                      },
                       icon: const Icon(
                         Icons.search,
                         size: 25,

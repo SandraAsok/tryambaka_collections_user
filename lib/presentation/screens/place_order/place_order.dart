@@ -4,16 +4,12 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
-import 'package:razorpay_flutter/razorpay_flutter.dart';
 import 'package:tryambaka_user/core/color/colors.dart';
 import 'package:tryambaka_user/core/constants/constants.dart';
 import 'package:tryambaka_user/core/strings/strings.dart';
 import 'package:tryambaka_user/presentation/screens/address/add_address.dart';
-import 'package:tryambaka_user/presentation/screens/place_order/order_loading_screen.dart';
 import 'package:tryambaka_user/presentation/screens/place_order/widgets/address_widget.dart';
 import 'package:tryambaka_user/presentation/screens/place_order/widgets/edit_address_button.dart';
-import 'package:tryambaka_user/presentation/screens/place_order/widgets/failure_widget.dart';
 import 'package:tryambaka_user/presentation/screens/place_order/widgets/price_text_widget.dart';
 
 class PlaceOrderScreen extends StatefulWidget {
@@ -28,34 +24,7 @@ class PlaceOrderScreen extends StatefulWidget {
 }
 
 class _PlaceOrderScreenState extends State<PlaceOrderScreen> {
-  int selectedPaymentIndex = 0;
   bool isAddress = false;
-  var razorpay = Razorpay();
-
-  @override
-  void initState() {
-    razorpay.on(Razorpay.EVENT_PAYMENT_SUCCESS, _handlePaymentSuccess);
-    razorpay.on(Razorpay.EVENT_PAYMENT_ERROR, _handlePaymentError);
-    razorpay.on(Razorpay.EVENT_EXTERNAL_WALLET, _handleExternalWallet);
-    super.initState();
-  }
-
-  void _handlePaymentSuccess(PaymentSuccessResponse response) {
-    Navigator.push(
-        context,
-        CupertinoPageRoute(
-          builder: (context) => const OrderLoadingScreen(),
-        ));
-  }
-
-  void _handlePaymentError(PaymentFailureResponse response) {
-    log(response.message.toString());
-    showFailure(context, "Failure", "Payment was unsuccessful");
-  }
-
-  void _handleExternalWallet(ExternalWalletResponse response) {
-    log("External wallet selected");
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -242,9 +211,7 @@ class _PlaceOrderScreenState extends State<PlaceOrderScreen> {
                 children: List.generate(
                   2,
                   (index) => GestureDetector(
-                    onTap: () => setState(() {
-                      selectedPaymentIndex = index;
-                    }),
+                    onTap: () {},
                     child: Padding(
                       padding: const EdgeInsets.symmetric(vertical: 5),
                       child: Container(
@@ -273,16 +240,16 @@ class _PlaceOrderScreenState extends State<PlaceOrderScreen> {
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
-                            trailing: Radio(
-                              value: selectedPaymentIndex == index,
-                              groupValue: true,
-                              onChanged: (value) {
-                                setState(() {
-                                  selectedPaymentIndex = index;
-                                });
-                              },
-                              activeColor: black,
-                            ),
+                            // trailing: Radio(
+                            //   value: selectedPaymentIndex == index,
+                            //   groupValue: true,
+                            //   onChanged: (value) {
+                            //     setState(() {
+                            //       selectedPaymentIndex = index;
+                            //     });
+                            //   },
+                            //   activeColor: black,
+                            // ),
                           ),
                         ),
                       ),
@@ -301,37 +268,7 @@ class _PlaceOrderScreenState extends State<PlaceOrderScreen> {
                     backgroundColor: black,
                     foregroundColor: white,
                   ),
-                  onPressed: () async {
-                    if (isAddress == true) {
-                      if (selectedPaymentIndex == 1) {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => const OrderLoadingScreen(),
-                            ));
-                      } else {
-                        final user = FirebaseAuth.instance.currentUser;
-                        Map<String, dynamic> options = {
-                          'key': 'rzp_test_UHMMVsaCTOCuSf',
-                          'amount': widget.totalPrice * 100,
-                          'name': 'Tryambaka',
-                          'timeout': 300,
-                          'description': 'Item',
-                          'prefill': {'contact': '', 'email': user!.email}
-                        };
-                        razorpay.open(options);
-                      }
-                    } else {
-                      Fluttertoast.showToast(
-                        msg: 'Please add an Address',
-                        toastLength: Toast.LENGTH_SHORT,
-                        gravity: ToastGravity.BOTTOM,
-                        timeInSecForIosWeb: 1,
-                        backgroundColor: black,
-                        textColor: white,
-                      );
-                    }
-                  },
+                  onPressed: () {},
                   child: const Row(
                     children: [
                       Text(
@@ -355,11 +292,5 @@ class _PlaceOrderScreenState extends State<PlaceOrderScreen> {
         ),
       ),
     );
-  }
-
-  @override
-  void dispose() {
-    razorpay.clear();
-    super.dispose();
   }
 }

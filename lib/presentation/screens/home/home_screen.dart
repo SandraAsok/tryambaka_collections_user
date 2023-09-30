@@ -9,10 +9,10 @@ import 'package:tryambaka_user/presentation/screens/category/widgets/category_ho
 import 'package:tryambaka_user/presentation/screens/products/widgets/exclusive_item.dart';
 import 'package:tryambaka_user/presentation/screens/products/exclusive_screen.dart';
 import 'package:tryambaka_user/presentation/screens/products/widgets/product_tile.dart';
+import 'package:tryambaka_user/presentation/screens/search/search_screen.dart';
 import 'package:tryambaka_user/presentation/widgets/shimmer_effect.dart';
 
 import '../../../core/constants/constants.dart';
-import '../search/widgets/search_widget.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -70,8 +70,19 @@ class _HomeScreenState extends State<HomeScreen> {
                 const Spacer(),
                 IconButton(
                   onPressed: () {
-                    Navigator.of(context).push(
-                        CupertinoPageRoute(builder: (context) => CartScreen()));
+                    Navigator.of(context).push(CupertinoPageRoute(
+                        builder: (context) => const SearchScreen()));
+                  },
+                  icon: const Icon(
+                    CupertinoIcons.search,
+                    color: black,
+                    size: 30,
+                  ),
+                ),
+                IconButton(
+                  onPressed: () {
+                    Navigator.of(context).push(CupertinoPageRoute(
+                        builder: (context) => const CartScreen()));
                   },
                   icon: const Icon(
                     CupertinoIcons.cart_fill,
@@ -85,7 +96,6 @@ class _HomeScreenState extends State<HomeScreen> {
             kHeight25,
             const Padding(
               padding: EdgeInsets.all(15.0),
-              child: CustomSearchWidget(),
             ),
             kHeight10,
             Row(
@@ -153,14 +163,13 @@ class _HomeScreenState extends State<HomeScreen> {
             const Row(
               children: [
                 Spacer(),
-                CategoryCircle(category: 'Men', url: 'assets/images/men.jpg'),
+                CategoryMenCircle(url: 'assets/images/men.jpg'),
                 Spacer(),
-                CategoryCircle(
-                    category: 'Woman', url: 'assets/images/woman.jpeg'),
+                CategoryWomanCircle(url: 'assets/images/woman.jpeg'),
                 Spacer(),
-                CategoryCircle(category: 'Boy', url: 'assets/images/boy.webp'),
+                CategoryBoyCircle(url: 'assets/images/boy.webp'),
                 Spacer(),
-                CategoryCircle(category: 'Girl', url: 'assets/images/girl.jpg'),
+                CategoryGirlCircle(url: 'assets/images/girl.jpg'),
                 Spacer(),
               ],
             ),

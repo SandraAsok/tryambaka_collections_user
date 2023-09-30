@@ -9,6 +9,7 @@ import 'package:tryambaka_user/core/color/colors.dart';
 import 'package:tryambaka_user/core/constants/constants.dart';
 import 'package:tryambaka_user/core/functions/firebase_functions.dart';
 import 'package:tryambaka_user/domain/cartmodel.dart';
+import 'package:tryambaka_user/presentation/screens/place_order/place_order.dart';
 
 class ProductDetailScreen extends StatefulWidget {
   final String id;
@@ -379,11 +380,11 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                   const Spacer(),
                   ElevatedButton(
                       onPressed: () {
-                        // Navigator.of(context).push(CupertinoPageRoute(
-                        //   builder: (context) => PlaceOrderScreen(
-                        //       totalPrice: int.parse(widget.price),
-                        //       totalCount: 1.toString()),
-                        // ));
+                        Navigator.of(context).push(CupertinoPageRoute(
+                          builder: (context) => PlaceOrderScreen(
+                              totalPrice: int.parse(widget.price),
+                              totalCount: 1.toString()),
+                        ));
                       },
                       style: ElevatedButton.styleFrom(
                         padding: EdgeInsets.symmetric(

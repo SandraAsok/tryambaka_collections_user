@@ -5,49 +5,6 @@ import 'package:tryambaka_user/presentation/screens/category/widgets/specific_it
 
 // ignore: camel_case_types
 
-class CategoryCircle extends StatelessWidget {
-  const CategoryCircle({
-    super.key,
-    required this.category,
-    required this.url,
-  });
-
-  final String category;
-  final String url;
-
-  @override
-  Widget build(BuildContext context) {
-    return InkWell(
-      onTap: () {
-        Navigator.of(context).push(CupertinoPageRoute(
-            builder: (context) => CategoryTile(
-                  category: category,
-                ),
-            fullscreenDialog: true));
-      },
-      child: Container(
-        width: 70,
-        height: 70,
-        decoration: BoxDecoration(
-          boxShadow: [
-            BoxShadow(
-              color: Colors.black.withOpacity(0.2),
-              spreadRadius: 2,
-              blurRadius: 2,
-              offset: const Offset(0, 4),
-            ),
-          ],
-          shape: BoxShape.circle,
-          image: DecorationImage(
-            image: AssetImage(url),
-            fit: BoxFit.cover,
-          ),
-        ),
-      ),
-    );
-  }
-}
-
 class SpecificItemCircle extends StatelessWidget {
   const SpecificItemCircle({
     super.key,
@@ -236,6 +193,170 @@ class GirlRow extends StatelessWidget {
         Spacer(),
         Spacer(),
       ],
+    );
+  }
+}
+
+class CategoryMenCircle extends StatelessWidget {
+  const CategoryMenCircle({
+    super.key,
+    required this.url,
+  });
+
+  final String url;
+
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+      onTap: () {
+        Navigator.of(context).push(CupertinoPageRoute(
+            builder: (context) => CategoryMenTile(
+                  category: 'Men',
+                ),
+            fullscreenDialog: true));
+      },
+      child: Container(
+        width: 70,
+        height: 70,
+        decoration: BoxDecoration(
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withOpacity(0.2),
+              spreadRadius: 2,
+              blurRadius: 2,
+              offset: const Offset(0, 4),
+            ),
+          ],
+          shape: BoxShape.circle,
+          image: DecorationImage(
+            image: AssetImage(url),
+            fit: BoxFit.cover,
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class CategoryWomanCircle extends StatelessWidget {
+  const CategoryWomanCircle({
+    super.key,
+    required this.url,
+  });
+
+  final String url;
+
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+      onTap: () {
+        Navigator.of(context).push(CupertinoPageRoute(
+            builder: (context) => CategoryWomanTile(
+                  category: 'Woman',
+                ),
+            fullscreenDialog: true));
+      },
+      child: Container(
+        width: 70,
+        height: 70,
+        decoration: BoxDecoration(
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withOpacity(0.2),
+              spreadRadius: 2,
+              blurRadius: 2,
+              offset: const Offset(0, 4),
+            ),
+          ],
+          shape: BoxShape.circle,
+          image: DecorationImage(
+            image: AssetImage(url),
+            fit: BoxFit.cover,
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class CategoryBoyCircle extends StatelessWidget {
+  const CategoryBoyCircle({
+    super.key,
+    required this.url,
+  });
+
+  final String url;
+
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+      onTap: () {
+        Navigator.of(context).push(CupertinoPageRoute(
+            builder: (context) => CategoryBoyTile(
+                  category: 'Boy',
+                ),
+            fullscreenDialog: true));
+      },
+      child: Container(
+        width: 70,
+        height: 70,
+        decoration: BoxDecoration(
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withOpacity(0.2),
+              spreadRadius: 2,
+              blurRadius: 2,
+              offset: const Offset(0, 4),
+            ),
+          ],
+          shape: BoxShape.circle,
+          image: DecorationImage(
+            image: AssetImage(url),
+            fit: BoxFit.cover,
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class CategoryGirlCircle extends StatelessWidget {
+  const CategoryGirlCircle({
+    super.key,
+    required this.url,
+  });
+
+  final String url;
+
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+      onTap: () {
+        Navigator.of(context).push(CupertinoPageRoute(
+            builder: (context) => CategoryGirlTile(
+                  category: 'Girl',
+                ),
+            fullscreenDialog: true));
+      },
+      child: Container(
+        width: 70,
+        height: 70,
+        decoration: BoxDecoration(
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withOpacity(0.2),
+              spreadRadius: 2,
+              blurRadius: 2,
+              offset: const Offset(0, 4),
+            ),
+          ],
+          shape: BoxShape.circle,
+          image: DecorationImage(
+            image: AssetImage(url),
+            fit: BoxFit.cover,
+          ),
+        ),
+      ),
     );
   }
 }

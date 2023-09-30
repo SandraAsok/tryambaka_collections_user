@@ -131,7 +131,7 @@ class AddNewAddresScreen extends StatelessWidget {
                       padding: MaterialStateProperty.all<EdgeInsets>(
                           const EdgeInsets.symmetric(vertical: 20)),
                     ),
-                    child: Row(
+                    child: const Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Icon(

@@ -22,7 +22,7 @@ class AddressScreen extends StatelessWidget {
         child: Column(
           children: [
             kHeight25,
-            Text(
+            const Text(
               "Delivery Address",
               style: TextStyle(
                 letterSpacing: 0.5,

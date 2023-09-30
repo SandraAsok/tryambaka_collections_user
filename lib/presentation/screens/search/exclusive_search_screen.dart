@@ -9,14 +9,14 @@ import 'package:tryambaka_user/presentation/widgets/shimmer_effect.dart';
 List<dynamic> availableProducts = [];
 List<dynamic> filteredProducts = [];
 
-class SearchScreen extends StatefulWidget {
-  const SearchScreen({super.key});
+class ExclusiveSearchScreen extends StatefulWidget {
+  const ExclusiveSearchScreen({super.key});
 
   @override
-  State<SearchScreen> createState() => _SearchScreenState();
+  State<ExclusiveSearchScreen> createState() => _ExclusiveSearchScreenState();
 }
 
-class _SearchScreenState extends State<SearchScreen> {
+class _ExclusiveSearchScreenState extends State<ExclusiveSearchScreen> {
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
@@ -36,7 +36,7 @@ class _SearchScreenState extends State<SearchScreen> {
             Expanded(
               child: StreamBuilder(
                 stream: FirebaseFirestore.instance
-                    .collection('products')
+                    .collection('exclusive')
                     .snapshots(),
                 builder: (context, snapshot) {
                   if (snapshot.hasError) {

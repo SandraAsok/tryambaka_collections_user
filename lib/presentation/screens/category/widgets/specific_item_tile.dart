@@ -44,7 +44,7 @@ class _SpecificItemTileState extends State<SpecificItemTile> {
   Widget build(BuildContext context) {
     String specificItem = widget.item;
     var size = MediaQuery.of(context).size;
-    final double productHeight = (size.height - kToolbarHeight - 24) / 5;
+    final double productHeight = (size.height - kToolbarHeight - 24) / 7;
     final double productWidth = size.width / 2;
     return SafeArea(
       child: Scaffold(
@@ -56,26 +56,9 @@ class _SpecificItemTileState extends State<SpecificItemTile> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 kHeight10,
-                Row(
-                  children: [
-                    Text(
-                      "${widget.category}'s ${widget.item}s",
-                      style: appbarTitle,
-                    ),
-                    const Spacer(),
-                    IconButton(
-                        onPressed: () {},
-                        icon: const Icon(
-                          Icons.search,
-                          size: 25,
-                        )),
-                    IconButton(
-                        onPressed: () {},
-                        icon: const Icon(
-                          Icons.favorite_border,
-                          size: 25,
-                        )),
-                  ],
+                Text(
+                  "${widget.category}'s ${widget.item}s",
+                  style: appbarTitle,
                 ),
                 kHeight25,
                 StreamBuilder<QuerySnapshot>(
